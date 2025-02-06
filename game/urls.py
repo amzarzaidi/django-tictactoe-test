@@ -1,9 +1,9 @@
-from django.conf.urls import url
-
+from django.urls import re_path
 from . import views
 
+app_name = "game"  # ✅ Add this line
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
-    url(r'^(?P<pk>\d+)/$', views.game, name='detail')
+    re_path(r'^$', views.index, name='index'),
+    re_path(r'^(?P<pk>\d+)/$', views.game, name='detail'),
 ]
