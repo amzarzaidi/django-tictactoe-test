@@ -1,11 +1,11 @@
-from django.conf.urls import include, url
+from django.urls import include, path, re_path
 from django.views.generic import RedirectView
-
 from django.contrib import admin
+
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^$', RedirectView.as_view(pattern_name='game:index', permanent=True), name='index'),
-    url(r'^game/', include('game.urls', namespace='game')),
-    url(r'^admin/', include(admin.site.urls)),
+    re_path(r'^$', RedirectView.as_view(pattern_name='game:index', permanent=True), name='index'),
+    path('game/', include('game.urls', namespace='game')),
+    path('admin/', admin.site.urls),  # Fixed admin URL
 ]
